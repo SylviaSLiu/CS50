@@ -3,14 +3,14 @@
 #include <string.h>
 #include <ctype.h>
 
-int turn(int y, int x);
 int main(int argc, string argv[]){
+if(argv[1] != '\0'){
     printf("plaintext:  ");
     string s = get_string();
     printf("ciphertext: ");
+    int k = atoi(argv[1]);
+    int add;
     if(argc == 2){
-        int k = atoi(argv[1]);
-        int add;
         for(int i=0, n=strlen(s); i<n; i++)
         {   
             add=(int)s[i]+k;
@@ -22,12 +22,22 @@ int main(int argc, string argv[]){
                  printf("%c",s[i]);
             }
         } 
-           
-    }else{
-        printf("Usage: ./caesar k");
+        printf("\n");
     }
-    printf("\n");
-    return 0;
+    if(argc!=2 || k<0){
+        printf("Usage: ./caesar k\n");
+    }
+    return 0; 
+}
+    
+    
+    
+    if(argv[1] == '\0')
+    {
+        printf("Usage: ./caesar k\n");
+        return 1;
+    }
+    
 }
 
 int turn(int y, int x){
